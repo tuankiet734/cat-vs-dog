@@ -1,11 +1,3 @@
-%%writefile app.py
-import streamlit as st
-import tensorflow as tf
-# ... (dán hết phần code còn lại của bạn vào đây)%%writefile app.py
-import streamlit as st
-import tensorflow as tf
-# ... (dán hết phần code còn lại của bạn vào đây)
-
 import streamlit as st
 import tensorflow as tf
 from tensorflow.keras.applications.mobilenet_v2 import MobileNetV2, preprocess_input, decode_predictions
@@ -18,7 +10,7 @@ st.set_page_config(page_title="Cat vs Dog Detector", page_icon="🐾")
 
 st.title(" Cat vs Dog Detector ")
 st.write("Project Web Deploy - Detect Cat & Dog")
-st.write("Nguyễn Đông Phương-2286400025")
+st.write("Nhóm Thành Kiệt Phương")
 
 # 2. Load Model
 @st.cache_resource
