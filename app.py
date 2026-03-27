@@ -1,3 +1,11 @@
+%%writefile app.py
+import streamlit as st
+import tensorflow as tf
+# ... (dán hết phần code còn lại của bạn vào đây)%%writefile app.py
+import streamlit as st
+import tensorflow as tf
+# ... (dán hết phần code còn lại của bạn vào đây)
+
 import streamlit as st
 import tensorflow as tf
 from tensorflow.keras.applications.mobilenet_v2 import MobileNetV2, preprocess_input, decode_predictions
@@ -10,7 +18,7 @@ st.set_page_config(page_title="Cat vs Dog Detector", page_icon="🐾")
 
 st.title(" Cat vs Dog Detector ")
 st.write("Project Web Deploy - Detect Cat & Dog")
-st.write("Nhóm Thành Kiệt Phương")
+st.write("Nguyễn Đông Phương-2286400025")
 
 # 2. Load Model
 @st.cache_resource
@@ -89,3 +97,24 @@ if uploaded_file is not None:
             else:
                 # Nếu không phải chó/mèo (trường hợp user up ảnh xe cộ, người...)
                 st.warning(f"Hmm... Hình như không phải chó hay mèo. Máy dự đoán là: {top_label}")
+
+from pyngrok import ngrok
+import os
+
+# 1. Tắt hết các kết nối cũ đang lỗi
+ngrok.kill()
+
+# 2. Dán mã TOKEN MỚI (dãy ký tự dài) vào đây
+NGROK_AUTH_TOKEN = "3BWN53vgDqpW7bROITQ2hHpbWWM_4TmuMxoi6ivJF69NiwX4a" 
+ngrok.set_auth_token(NGROK_AUTH_TOKEN)
+
+# 3. Chạy lại Streamlit (đảm bảo file app.py đã tồn tại)
+os.system("streamlit run app.py --server.port 8501 &")
+
+# 4. Tạo lại link
+try:
+    public_url = ngrok.connect(8501)
+    print("Link truy cập của bạn đã sẵn sàng:")
+    print(public_url)
+except Exception as e:
+    print(f"Lỗi: {e}")
